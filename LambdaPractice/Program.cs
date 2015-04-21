@@ -35,7 +35,7 @@ namespace LambdaPractice
             Console.WriteLine("");
 
             //declare a variable ballProducts and set it equal to all the products that have ball in the name.
-            List<string> ballProducts = products.Where(x => x.Contains("ball")).ToList();
+            List<string> ballProducts = products.Where(x => x.ToLower().Contains("ball")).ToList();
 
             //print the ballProducts to the console using a foreach loop or string.Join().
             foreach (string product in ballProducts)
@@ -63,10 +63,10 @@ namespace LambdaPractice
             Console.WriteLine("");
 
             //print the product with the 3rd shortest name to the console using an index or Skip/Take (you must convert the results to a list using .ToList()).  
+
+            List<string> thirdShortest = ballProducts.OrderBy(x => x.Length).ToList();
             
-            
-            foreach (string product in ballProducts.OrderBy(x => x.Length).Take(3))
-            { Console.WriteLine(product); }
+            { Console.WriteLine(thirdShortest[2]); }
 
             Console.WriteLine("");
             //print the ballProduct with the 2nd longest name to the console using an index or Skip/Take (you must convert the results to a list using .ToList()). 
@@ -74,7 +74,7 @@ namespace LambdaPractice
             Console.WriteLine(ballPSecondLongest[1]);
             Console.WriteLine("");
             //declare a variable reversedProducts and set it equal to all products ordered by the longest word first. (use the OrderByDescending() extension).
-            List<string> reversedProducts = products.OrderByDescending(x => x.Length).Reverse().ToList(); 
+            List<string> reversedProducts = products.OrderByDescending(x => x.Length).ToList(); 
             //print out the reversedProducts to the console using a foreach loop.
             foreach (string item in reversedProducts)
             {
